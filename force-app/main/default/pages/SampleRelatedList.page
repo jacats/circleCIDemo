@@ -1,0 +1,35 @@
+<apex:page standardController="Contact" extensions="sampleDetailPagecon">
+<style>
+.fewerMore { display: none;}
+</style>
+ <apex:form >
+ <apex:pageMessages />
+ <apex:detail relatedList="true"></apex:detail>
+
+ <apex:pageblock id="CustomList" title="Related Opportunities">
+ <apex:pageblocktable value="{!oppz}" var="o" rendered="{!NOT(ISNULL(oppz))}">
+  <apex:column >
+             <apex:facet name="header">Action</apex:facet>
+                        
+  <apex:commandLink action="{!editOpp}" value="Edit">
+  <apex:param name="oppid" value="{!o.id}"/>
+ </apex:commandLink> &nbsp; | &nbsp;   <apex:commandLink action="{!deleteOpp}" value="Delete">
+  <apex:param name="oppid" value="{!o.id}"/>
+ </apex:commandLink>
+ </apex:column>
+ <!-- 
+ <apex:column >
+   <apex:commandLink action="{!deleteOpp}" value="Delete">
+  <apex:param name="oppid" value="{!o.id}"/>
+ </apex:commandLink>
+ </apex:column>
+ -->
+ <apex:column value="{!o.Name}"/>
+ <apex:column value="{!o.Account.Name}"/>
+ <apex:column value="{!o.Type}"/>
+    <apex:column value="{!o.CloseDate}"/>    
+ </apex:pageblocktable>
+ </apex:pageblock>
+ </apex:form>
+  <apex:relatedList list="Opportunities" />
+</apex:page>

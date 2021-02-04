@@ -1,0 +1,27 @@
+<apex:page controller="ProjSchedulesController" sidebar="false">
+    <apex:form >
+        <apex:pageBlock id="projID">
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!Sched}" var="pr">
+                <apex:column value="{!pr.Name}"/>
+                <!-- <apex:column value="{!pr.Pricing_Type__c}"/> -->
+                <apex:column headerValue="Date">
+                    <apex:inputField value="{!pr.Date__c}"/>  
+                </apex:column>
+                <apex:column headerValue="Estimated Amount">
+                    <apex:inputField value="{!pr.Estimated_Amount__c}"/>  
+                </apex:column> 
+                <apex:column headerValue="Actual Amount">
+                    <apex:inputField value="{!pr.Actual_Amount__c}"/>  
+                </apex:column> 
+                <!--
+                <apex:column value="{!pr.PTP_Premium_Price__c}"/>   
+                <apex:column value="{!pr.PTP_Prestige_Price__c}"/>
+                -->
+            </apex:pageBlockTable>      
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
